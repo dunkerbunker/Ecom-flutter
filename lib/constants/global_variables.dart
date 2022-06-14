@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GlovalVariables{
+class GlobalVariables{
   // COLORS
   static const appBarGradient = LinearGradient(
     colors: [
