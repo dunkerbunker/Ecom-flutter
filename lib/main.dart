@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
             elevation: 0, iconTheme: IconThemeData(color: Colors.black)),
       ),
+      onGenerateRoute: ,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Amazon Clone'),
