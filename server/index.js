@@ -2,7 +2,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-
 // importing from files
 const authRouter = require('./routes/auth');
 

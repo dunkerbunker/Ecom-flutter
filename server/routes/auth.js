@@ -10,7 +10,6 @@ authRouter.post('/api/signup', async (req, res) => {
     // post the data into db and return to user
 
     // gettung data from body of request
-
     try {
         const {name, email, password} = req.body;
 
@@ -31,7 +30,6 @@ authRouter.post('/api/signup', async (req, res) => {
     } catch (e) {
         res.status(500).json({error: e.message});
     }
-    
 })
 
 
