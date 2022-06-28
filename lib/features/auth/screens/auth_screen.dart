@@ -35,12 +35,20 @@ class _AuthScreenState extends State<AuthScreen> {
     _passwordController.dispose();
   }
 
-  void signUpuser() {
+  void signUpUser() {
     authService.signUpUser(
         context: context,
         email: _emailController.text,
         password: _passwordController.text,
         name: _nameController.text);
+  }
+
+  void signInUser() {
+    authService.signInUser(
+        context: context,
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
   }
 
   @override
@@ -109,7 +117,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         text: 'Sign Up',
                         onTap: () {
                           if (_signUpFormKey.currentState!.validate()) {
-                            signUpuser();
+                            signUpUser();
                           }
                         },
                       )
@@ -158,7 +166,11 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      CustomButton(text: 'Sign In', onTap: () {})
+                      CustomButton(text: 'Sign In', onTap: () {
+                        if (_signInFormKey.currentState!.validate()) {
+                            signInUser();
+                          }
+                      })
                     ],
                   ),
                 ),
