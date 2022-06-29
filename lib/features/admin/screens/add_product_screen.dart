@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../common/widgets/custom_textField.dart';
 import '../../../constants/global_variables.dart';
+import 'services/admin_services.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
