@@ -1,4 +1,6 @@
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/account/screens/account_screen.dart';
+import 'package:amazon_clone/features/home/screens/home_screen.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
@@ -14,15 +16,32 @@ class _BottomBarState extends State<BottomBar> {
   int _page = 0;
   double bottomNavBarWidth = 42;
   double bottomNavBarBorderWidth = 5;
+
+  List<Widget> pages = [
+    const HomeScreen(),
+    const AccountScreen(),
+    const Center(
+      child: Text('Cart page'),
+    ),
+  ];
+
+  void updatePage(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
         unselectedItemColor: GlobalVariables.unselectedNavBarColor,
         backgroundColor: GlobalVariables.backgroundColor,
         iconSize: 28,
+        onTap: updatePage,
         items: [
           // first (HOME PAGE)
           BottomNavigationBarItem(
