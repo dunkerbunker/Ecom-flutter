@@ -18,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -72,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search Amazon',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -96,11 +95,17 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: const [
             AddressBox(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             TopCategories(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             CarouselImage(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             DealOfDay(),
           ],
         ),
