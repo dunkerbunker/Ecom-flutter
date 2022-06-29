@@ -14,23 +14,28 @@ class BelowAppBar extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
       child: Row(
         children: [
-          RichText(
-            text: TextSpan(
-              text: 'Hello, ',
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-              ),
-              children: [
-                TextSpan(
-                  text: user.name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+            ),
+            child: RichText(
+              text: TextSpan(
+                text: 'Hello, ',
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
                 ),
-              ],
+                children: [
+                  TextSpan(
+                    text: user.name,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

@@ -23,9 +23,9 @@ class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               padding: const EdgeInsets.only(left: 15),
@@ -48,6 +48,7 @@ class _OrdersState extends State<Orders> {
             ),
           ],
         ),
+
         // DISPLAY ORDERS
         Container(
           height: 170,

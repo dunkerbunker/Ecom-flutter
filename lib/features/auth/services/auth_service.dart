@@ -4,7 +4,6 @@ import 'package:amazon_clone/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone/constants/error_handling.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
-import 'package:amazon_clone/features/home/screens/home_screen.dart';
 import 'package:amazon_clone/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -23,13 +22,14 @@ class AuthService {
   }) async {
     try {
       User user = User(
-          id: '',
-          name: name,
-          password: password,
-          email: email,
-          address: '',
-          type: '',
-          token: '');
+        id: '',
+        name: name,
+        password: password,
+        email: email,
+        address: '',
+        type: '',
+        token: '',
+      );
 
       http.Response res = await http.post(
         Uri.parse('$uri/api/signup'),
@@ -44,7 +44,9 @@ class AuthService {
         context: context,
         onSuccess: () {
           showSnackBar(
-              context, 'Account created! Login with the same credentials');
+            context,
+            'Account created! Login with the same credentials!',
+          );
         },
       );
     } catch (e) {
@@ -125,5 +127,5 @@ class AuthService {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-  } 
+  }
 }
