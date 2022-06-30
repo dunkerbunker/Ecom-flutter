@@ -17,6 +17,8 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
+    const Text('Admin'),
+    const Text('Orders'),
     // const AnalyticsScreen(),
     // const OrdersScreen(),
   ];

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../common/widgets/loader.dart';
 import '../../../models/product.dart';
 import '../../account/widgets/single_product.dart';
+import '../services/admin_services.dart';
 import 'add_product_screen.dart';
-import 'services/admin_services.dart';
+
 
 class PostsScreen extends StatefulWidget {
   const PostsScreen({Key? key}) : super(key: key);
@@ -14,9 +15,7 @@ class PostsScreen extends StatefulWidget {
 }
 
 class _PostsScreenState extends State<PostsScreen> {
-
   List<Product>? products;
-  
   final AdminServices adminServices = AdminServices();
 
   @override

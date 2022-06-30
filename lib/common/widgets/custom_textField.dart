@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
         }
         return null;
       },
-      minLines: maxLines,
+      maxLines: maxLines,
     );
   }
 }

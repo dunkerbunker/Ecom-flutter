@@ -58,7 +58,7 @@ authRouter.post('/api/signin', async (req, res) => {
 
         const token = jwt.sign({id: user._id}, "passwordKey");
         // ... deconstructs user object. will give specific properties of user
-        res.json({token, ...user._doc});
+        res.json({ token, ...user._doc });
 
     } catch (e) {
         res.status(500).json({error: e.message});
