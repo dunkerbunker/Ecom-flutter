@@ -1,24 +1,39 @@
-import 'package:amazon_clone/features/home/widgets/address_box.dart';
-import 'package:amazon_clone/features/home/widgets/carousel_image.dart';
-import 'package:amazon_clone/features/home/widgets/deal_of_day.dart';
-import 'package:amazon_clone/features/home/widgets/top_categories.dart';
-import 'package:amazon_clone/features/search/screens/search_screen.dart';
-
+import 'package:amazon_clone/common/widgets/loader.dart';
+import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/search/services/search_services.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/global_variables.dart';
+import '../../../models/product.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const String routeName = '/home';
-  const HomeScreen({Key? key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  static const String routeName = '/search-screen';
+  final String searchQuery;
+  const SearchScreen({
+    Key? key,
+    required this.searchQuery,
+  }) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SearchScreenState extends State<SearchScreen> {
+  List<Product>? products;
+  final SearchServices searchServices = SearchServices();
 
-  void naviagteToSearchScreen(String query) {
+  @override
+  void initState() {
+    super.initState();
+    fetchSearchedProduct();
+  }
+
+  fetchSearchedProduct() async {
+    products = await searchServices.fetchSearchedProduct(
+        context: context, searchQuery: widget.searchQuery);
+    setState(() {});
+  }
+
+  void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
@@ -44,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-                      onFieldSubmitted: naviagteToSearchScreen,
+                      onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: () {},
@@ -77,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon',
+                        hintText: 'Search Amazon.in',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -97,25 +112,33 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            AddressBox(),
-            SizedBox(
-              height: 10,
+      body: products == null
+          ? const Loader()
+          : Column(
+              children: [
+                const AddressBox(),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: products!.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailScreen.routeName,
+                            arguments: products![index],
+                          );
+                        },
+                        child: SearchedProduct(
+                          product: products![index],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            TopCategories(),
-            SizedBox(
-              height: 10,
-            ),
-            CarouselImage(),
-            SizedBox(
-              height: 10,
-            ),
-            DealOfDay(),
-          ],
-        ),
-      ),
     );
   }
 }
