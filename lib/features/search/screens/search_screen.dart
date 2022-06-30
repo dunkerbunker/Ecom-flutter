@@ -1,6 +1,8 @@
 import 'package:amazon_clone/common/widgets/loader.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/home/widgets/address_box.dart';
 import 'package:amazon_clone/features/search/services/search_services.dart';
+import 'package:amazon_clone/features/search/widgets/searched_product.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product.dart';
@@ -18,7 +20,9 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+
   List<Product>? products;
+  
   final SearchServices searchServices = SearchServices();
 
   @override
