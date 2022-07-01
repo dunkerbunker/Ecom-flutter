@@ -26,12 +26,13 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
   }
 });
 
-// create a post request route to rate the product.
+// route to rate the product.
 productRouter.post("/api/rate-product", auth, async (req, res) => {
   try {
     const { id, rating } = req.body;
     let product = await Product.findById(id);
 
+    // check if user already rated, if so replace
     for (let i = 0; i < product.ratings.length; i++) {
       if (product.ratings[i].userId == req.user) {
         product.ratings.splice(i, 1);

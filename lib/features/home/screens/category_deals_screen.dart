@@ -1,4 +1,5 @@
 import 'package:amazon_clone/features/home/services/home_services.dart';
+import 'package:amazon_clone/features/product_details/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/widgets/loader.dart';
@@ -85,11 +86,11 @@ class _CategoryDealsScreenState extends State<CategoryDealsScreen> {
                       final product = productList![index];
                       return GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(
-                          //   context,
-                          //   ProductDetailScreen.routeName,
-                          //   arguments: product,
-                          // );
+                          Navigator.pushNamed(
+                            context,
+                            ProductDetailsScreen.routeName,
+                            arguments: product,
+                          );
                         },
                         child: Column(
                           children: [
