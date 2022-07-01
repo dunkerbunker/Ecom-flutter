@@ -6,6 +6,7 @@ const adminRouter = require('./routes/admin');
 // importing from files
 const authRouter = require('./routes/auth');
 const productRouter = require('./routes/product');
+const userRouter = require('./routes/user');
 
 // init 
 const PORT = 3000;
@@ -15,8 +16,9 @@ const DB = "mongodb+srv://yoosuf:test1234@cluster0.4vlod.mongodb.net/?retryWrite
 // middleware
 app.use(express.json())
 app.use(authRouter);
-app.use(adminRouter)
-app.use(productRouter)
+app.use(adminRouter);
+app.use(productRouter);
+app.use(userRouter);
 
 
 // connections

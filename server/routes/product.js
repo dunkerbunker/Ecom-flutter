@@ -57,6 +57,7 @@ productRouter.get("/api/deal-of-day", auth, async (req, res) => {
   try {
     let products = await Product.find({});
 
+    // bubble sort
     products = products.sort((a, b) => {
       let aSum = 0;
       let bSum = 0;
