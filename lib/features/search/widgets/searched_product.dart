@@ -78,7 +78,7 @@ class SearchedProduct extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.teal,
                       ),
-                      maxLines: 2,
+                      maxLines: 2, 
                     ),
                   ),
                 ],
