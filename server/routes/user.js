@@ -14,6 +14,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
     if (user.cart.length == 0) {
       user.cart.push({ product, quantity: 1 });
     } else {
+        // check if product in cart if so increase quantity
       let isProductFound = false;
       for (let i = 0; i < user.cart.length; i++) {
         if (user.cart[i].product._id.equals(product._id)) {
@@ -22,6 +23,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
       }
 
       if (isProductFound) {
+        // find is basically loop through the array and find the product
         let producttt = user.cart.find((productt) =>
           productt.product._id.equals(product._id)
         );
