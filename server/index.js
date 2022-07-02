@@ -21,7 +21,7 @@ app.use(productRouter);
 app.use(userRouter);
 
 
-// connections
+// connection to mongoDB
 mongoose
     .connect(DB)
     .then(() => {
