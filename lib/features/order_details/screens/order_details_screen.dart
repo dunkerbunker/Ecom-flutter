@@ -34,7 +34,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     currentStep = widget.order.status;
   }
 
-  //  !!!ONLY FOR ADMIN!!!
+  //  !!!ADMIN!!!
   void changeOrderStatus(int status) {
     adminServices.changeOrderStatus(
       context: context,
@@ -105,7 +105,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search Catalog',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -131,6 +131,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 20),
               const Text(
                 'View order details',
                 style: TextStyle(
@@ -153,12 +154,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       DateTime.fromMillisecondsSinceEpoch(
                           widget.order.orderedAt),
                     )}'),
-                    Text('Order ID:          ${widget.order.id}'),
+                    Text('Order ID:           ${widget.order.id}'),
                     Text('Order Total:      \$${widget.order.totalPrice}'),
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 30),
               const Text(
                 'Purchase Details',
                 style: TextStyle(
@@ -185,22 +186,26 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                           ),
                           const SizedBox(width: 5),
                           Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.order.products[i].name,
-                                  style: const TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.order.products[i].name,
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Text(
-                                  'Qty: ${widget.order.quantity[i]}',
-                                ),
-                              ],
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Qty: ${widget.order.quantity[i]}',
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -208,7 +213,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 30),
               const Text(
                 'Tracking',
                 style: TextStyle(
@@ -226,9 +231,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   currentStep: currentStep,
                   controlsBuilder: (context, details) {
                     if (user.type == 'admin') {
-                      return CustomButton(
-                        text: 'Done',
-                        onTap: () => changeOrderStatus(details.currentStep),
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: CustomButton(
+                          text: 'Done',
+                          onTap: () => changeOrderStatus(details.currentStep),
+                        ),
                       );
                     }
                     return const SizedBox();
@@ -237,7 +245,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     Step(
                       title: const Text('Pending'),
                       content: const Text(
-                        'Your order is yet to be delivered',
+                        'Your order is yet to be confirmed',
                       ),
                       isActive: currentStep > 0,
                       state: currentStep > 0
@@ -245,9 +253,9 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                           : StepState.indexed,
                     ),
                     Step(
-                      title: const Text('Completed'),
+                      title: const Text('Processed'),
                       content: const Text(
-                        'Your order has been delivered, you are yet to sign.',
+                        'Your order has been processed',
                       ),
                       isActive: currentStep > 1,
                       state: currentStep > 1

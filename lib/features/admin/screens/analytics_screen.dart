@@ -13,9 +13,8 @@ class AnalyticsScreen extends StatefulWidget {
 }
 
 class _AnalyticsScreenState extends State<AnalyticsScreen> {
-
   final AdminServices adminServices = AdminServices();
-  
+
   int? totalSales;
   List<Sales>? earnings;
 
@@ -36,27 +35,43 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   Widget build(BuildContext context) {
     return earnings == null || totalSales == null
         ? const Loader()
-        : Column(
-            children: [
-              Text(
-                '\$$totalSales',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 250,
-                child: CategoryProductsChart(seriesList: [
-                  charts.Series(
-                    id: 'Sales',
-                    data: earnings!,
-                    domainFn: (Sales sales, _) => sales.label,
-                    measureFn: (Sales sales, _) => sales.earning,
+        : Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                Text(
+                  'Total Sales: MVR $totalSales',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                ]),
-              )
-            ],
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  color: Colors.black12.withOpacity(0.08),
+                  height: 1,
+                ),
+                const SizedBox(height: 40),
+                Container(
+                  height: 500,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.black12,
+                    ),
+                  ),
+                  child: CategoryProductsChart(seriesList: [
+                    charts.Series(
+                      id: 'Sales',
+                      data: earnings!,
+                      domainFn: (Sales sales, _) => sales.label,
+                      measureFn: (Sales sales, _) => sales.earning,
+                    ),
+                  ]),
+                )
+              ],
+            ),
           );
   }
 }

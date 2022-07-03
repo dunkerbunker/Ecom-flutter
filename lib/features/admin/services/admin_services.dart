@@ -24,9 +24,8 @@ class AdminServices {
     required String category,
     required List<File> images,
   }) async {
-
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-    
+
     try {
       final cloudinary = CloudinaryPublic('yoosufsayyid', 'njrbuuam');
 
@@ -72,13 +71,13 @@ class AdminServices {
 
   // get products
   Future<List<Product>> fetchAllProducts(BuildContext context) async {
-
     final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     List<Product> productList = [];
 
     try {
-      http.Response res = await http.get(Uri.parse('$uri/admin/get-products'), headers: {
+      http.Response res =
+          await http.get(Uri.parse('$uri/admin/get-products'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -232,4 +231,3 @@ class AdminServices {
     };
   }
 }
-

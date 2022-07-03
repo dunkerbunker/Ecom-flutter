@@ -3,9 +3,8 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
 class CategoryProductsChart extends StatelessWidget {
-
   final List<charts.Series<Sales, String>> seriesList;
-  
+
   const CategoryProductsChart({
     Key? key,
     required this.seriesList,
@@ -13,9 +12,12 @@ class CategoryProductsChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return charts.BarChart(
-      seriesList,
-      animate: true,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: charts.BarChart(
+        seriesList,
+        animate: true,
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:amazon_clone/common/widgets/custom_button.dart';
 import 'package:amazon_clone/common/widgets/custom_textField.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
@@ -8,7 +9,6 @@ import 'package:pay/pay.dart';
 import 'package:provider/provider.dart';
 
 class AddressScreen extends StatefulWidget {
-
   static const String routeName = '/address';
   final String totalAmount;
 
@@ -22,7 +22,6 @@ class AddressScreen extends StatefulWidget {
 }
 
 class _AddressScreenState extends State<AddressScreen> {
-
   final TextEditingController flatBuildingController = TextEditingController();
   final TextEditingController areaController = TextEditingController();
   final TextEditingController pincodeController = TextEditingController();
@@ -89,6 +88,24 @@ class _AddressScreenState extends State<AddressScreen> {
     );
   }
 
+  void onCashPaymentResult(address) {
+
+    payPressed(address);
+
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveUserAddress(
+          context: context, address: addressToBeUsed);
+    }
+    addressServices.placeOrder(
+      context: context,
+      address: addressToBeUsed,
+      totalSum: double.parse(widget.totalAmount),
+    );
+  }
+
   void payPressed(String addressFromProvider) {
     addressToBeUsed = "";
 
@@ -113,7 +130,6 @@ class _AddressScreenState extends State<AddressScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     var address = context.watch<UserProvider>().user.address;
 
     return Scaffold(
@@ -214,6 +230,13 @@ class _AddressScreenState extends State<AddressScreen> {
                 loadingIndicator: const Center(
                   child: CircularProgressIndicator(),
                 ),
+              ),
+              const SizedBox(height: 10),
+              CustomButton(
+                text: 'Cash on Delivery',
+                onTap: () {
+                  onCashPaymentResult(address);
+                },
               ),
             ],
           ),
