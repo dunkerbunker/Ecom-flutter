@@ -18,16 +18,16 @@ class GlobalVariables {
   static const authBackgroundColor = Color.fromARGB(255, 255, 254, 254);
   static const starColor = Color.fromARGB(255, 238, 142, 146);
   static const Color greyBackgroundCOlor = Color(0xffebecee);
-  static var selectedNavBarColor = Colors.blue[800]!;
+  static var selectedNavBarColor = const Color.fromARGB(255, 138, 21, 192);
   static const unselectedNavBarColor = Colors.black87;
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/WLA/TS/D37847648_Accessories_savingdays_Jan22_Cat_PC_1500.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/AdvantagePrime/BAU/14thJan/D37196025_IN_WL_AdvantageJustforPrime_Jan_Mob_ingress-banner_1242x450.jpg',
     'https://images-na.ssl-images-amazon.com/images/G/31/Symbol/2020/00NEW/1242_450Banners/PL31_copy._CB432483346_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/G/31/img21/shoes/September/SSW/pc-header._CB641971330_.jpg',
+    'https://img.freepik.com/free-psd/fashion-sale-social-media-facebook-cover-template_233825-84.jpg?w=1380',
+    'https://img.freepik.com/free-psd/digital-marketing-corporate-social-media-facebook-cover-template_233825-114.jpg?w=1380',
+    'https://img.freepik.com/free-psd/fashion-sale-social-media-facebook-cover-template_233825-92.jpg?w=1380',
+    'https://img.freepik.com/free-psd/home-sale-real-estate-social-media-facebook-cover-template_233825-218.jpg?w=1380',
   ];
 
   static const List<Map<String, String>> categoryImages = [

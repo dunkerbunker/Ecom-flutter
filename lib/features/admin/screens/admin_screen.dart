@@ -46,7 +46,7 @@ class _AdminScreenState extends State<AdminScreen> {
               Container(
                 alignment: Alignment.topLeft,
                 child: Image.asset(
-                  'assets/images/amazon_in.png',
+                  'assets/images/logo.png',
                   width: 120,
                   height: 45,
                   color: Colors.black,

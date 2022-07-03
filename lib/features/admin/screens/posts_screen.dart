@@ -1,3 +1,4 @@
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/widgets/loader.dart';
@@ -5,7 +6,6 @@ import '../../../models/product.dart';
 import '../../account/widgets/single_product.dart';
 import '../services/admin_services.dart';
 import 'add_product_screen.dart';
-
 
 class PostsScreen extends StatefulWidget {
   const PostsScreen({Key? key}) : super(key: key);
@@ -48,50 +48,57 @@ class _PostsScreenState extends State<PostsScreen> {
   Widget build(BuildContext context) {
     return products == null
         ? const Loader()
-        : Scaffold(
-            body: GridView.builder(
-              itemCount: products!.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                final productData = products![index];
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 140,
-                      child: SingleProduct(
-                        image: productData.images[0],
+        : Padding(
+            padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+            child: Scaffold(
+              body: GridView.builder(
+                itemCount: products!.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  final productData = products![index];
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 140,
+                        child: SingleProduct(
+                          image: productData.images[0],
+                        ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            productData.name,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
+                                productData.name,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () => deleteProduct(productData, index),
-                          icon: const Icon(
-                            Icons.delete_outline,
+                          IconButton(
+                            onPressed: () => deleteProduct(productData, index),
+                            icon: const Icon(
+                              Icons.delete_outline,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                );
-              },
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: navigateToAddProduct,
+                tooltip: 'Add a Product',
+                backgroundColor: GlobalVariables.secondaryColor,
+                child: const Icon(Icons.add),
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: navigateToAddProduct,
-              tooltip: 'Add a Product',
-              child: const Icon(Icons.add),
-            ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerFloat,
           );
   }
 }
