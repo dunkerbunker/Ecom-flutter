@@ -1,3 +1,4 @@
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/cart/services/cart_services.dart';
 import 'package:amazon_clone/features/product_details/services/product_details_services.dart';
 import 'package:amazon_clone/models/product.dart';
@@ -17,8 +18,9 @@ class CartProduct extends StatefulWidget {
 }
 
 class _CartProductState extends State<CartProduct> {
-  final ProductDetailsServices productDetailsServices = ProductDetailsServices();
-  
+  final ProductDetailsServices productDetailsServices =
+      ProductDetailsServices();
+
   final CartServices cartServices = CartServices();
 
   void increaseQuantity(Product product) {
@@ -120,6 +122,7 @@ class _CartProductState extends State<CartProduct> {
                     InkWell(
                       onTap: () => decreaseQuantity(product),
                       child: Container(
+                        color: const Color.fromARGB(255, 40, 192, 252),
                         width: 35,
                         height: 32,
                         alignment: Alignment.center,
@@ -147,6 +150,7 @@ class _CartProductState extends State<CartProduct> {
                     InkWell(
                       onTap: () => increaseQuantity(product),
                       child: Container(
+                        color: const Color.fromARGB(255, 40, 192, 252),
                         width: 35,
                         height: 32,
                         alignment: Alignment.center,

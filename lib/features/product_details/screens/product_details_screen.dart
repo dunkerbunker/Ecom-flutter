@@ -113,7 +113,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon.in',
+                        hintText: 'Search Catalog',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -224,7 +224,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               child: CustomButton(
                 text: 'Add to Cart',
                 onTap: addToCart,
-                color: const Color.fromRGBO(254, 216, 19, 1),
+                color: const Color.fromARGB(255, 40, 192, 252),
               ),
             ),
             const SizedBox(height: 10),
@@ -251,7 +251,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               itemPadding: const EdgeInsets.symmetric(horizontal: 4),
               itemBuilder: (context, _) => const Icon(
                 Icons.star,
-                color: GlobalVariables.secondaryColor,
+                color: GlobalVariables.starColor,
               ),
               onRatingUpdate: (rating) {
                 productDetailsServices.rateProduct(

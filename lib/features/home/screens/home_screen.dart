@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 1,
                           ),
                         ),
-                        hintText: 'Search Amazon',
+                        hintText: 'Search Catalog',
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -98,22 +98,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            AddressBox(),
-            SizedBox(
-              height: 10,
-            ),
-            TopCategories(),
-            SizedBox(
-              height: 10,
-            ),
-            CarouselImage(),
-            SizedBox(
-              height: 10,
-            ),
-            DealOfDay(),
-          ],
+        child: Container(
+          color: GlobalVariables.backgroundColor,
+          child: Column(
+            children: const [
+              AddressBox(),
+              SizedBox(
+                height: 10,
+              ),
+              TopCategories(),
+              SizedBox(
+                height: 10,
+              ),
+              CarouselImage(),
+              SizedBox(
+                height: 10,
+              ),
+              DealOfDay(),
+            ],
+          ),
         ),
       ),
     );

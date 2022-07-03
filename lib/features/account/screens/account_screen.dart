@@ -24,7 +24,7 @@ class AccountScreen extends StatelessWidget {
               Container(
                 alignment: Alignment.topLeft,
                 child: Image.asset(
-                  'assets/images/amazon_in.png',
+                  'assets/images/logo.png',
                   width: 120,
                   height: 45,
                   color: Colors.black,
@@ -49,9 +49,13 @@ class AccountScreen extends StatelessWidget {
       body: Column(
         children: const [
           BelowAppBar(),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           TopButtons(),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Orders()
         ],
       ),
