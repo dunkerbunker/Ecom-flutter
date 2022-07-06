@@ -107,6 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
               ),
+              
               Container(
                 color: Colors.transparent,
                 height: 42,
