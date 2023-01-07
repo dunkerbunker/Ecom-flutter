@@ -21,8 +21,9 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Product>? products;
 
+  List<Product>? products;
+  
   final SearchServices searchServices = SearchServices();
 
   @override
@@ -106,6 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
               ),
+              
               Container(
                 color: Colors.transparent,
                 height: 42,
